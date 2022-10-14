@@ -1,0 +1,78 @@
+management: 
+  endpoint: 
+    metrics: 
+      enabled: true
+    prometheus: 
+      enabled: true
+  endpoints: 
+    web: 
+      exposure: 
+        include: "*"
+  metrics: 
+    export: 
+      prometheus: 
+        enabled: true
+spring: 
+  application: 
+    name: Nachrefundofidddbank
+  cloud: 
+    config: 
+      failFast: false
+      retry: 
+        maxAttempts: 20
+      uri: ${CONFIG_SERVER_URI}
+  profiles: 
+    active: ${PROFILE:dev}
+  sleuth: 
+    sampler: 
+      percentage: 1
+  api: 
+    achoperations: 
+      context-path: /ACHOperations/{achoperationsId}/Retrieve
+      hosturl: v1/bian-3/core/payment/termdeposit/10.0.0/
+      jolt-filename: achoperations769553-jolt.json
+    corporatecurrentaccount: 
+      context-path: /CorporateCurrentAccount/Initiate
+      hosturl: v1/bian-3/core/payment/termdeposit/10.0.0/
+      jolt-filename: corporatecurrentaccount960135-jolt.json
+    correspondentbankoperations: 
+      context-path: /CorrespondentBankOperations/Initiate
+      hosturl: v1/bian-3/core/payment/termdeposit/10.0.0/
+      jolt-filename: correspondentbankoperations880596-jolt.json
+    currentaccount: 
+      context-path: /CurrentAccount/Initiate
+      hosturl: v1/bian-3/core/payment/termdeposit/10.0.0/
+      jolt-filename: currentaccount751062-jolt.json
+    financialgateway: 
+      context-path: /FinancialGateway/Initiate
+      hosturl: v1/bian-3/core/payment/termdeposit/10.0.0/
+      jolt-filename: financialgateway671720-jolt.json
+    internalbankaccount: 
+      context-path: /InternalBankAccount/Initiate
+      hosturl: v1/bian-3/core/payment/termdeposit/10.0.0/
+      jolt-filename: internalbankaccount737557-jolt.json
+    paymentexecution: 
+      context-path: /PaymentExecution/Initiate
+      hosturl: v1/bian-3/core/payment/termdeposit/10.0.0/
+      jolt-filename: paymentexecution393032-jolt.json
+    paymentinitiation: 
+      context-path: /PaymentInitiation/Initiate
+      hosturl: v1/bian-3/core/payment/termdeposit/10.0.0/
+      jolt-filename: paymentinitiation499678-jolt.json
+    paymentorder: 
+      context-path: /PaymentOrder/Initiate
+      hosturl: v1/bian-3/core/payment/termdeposit/10.0.0/
+      jolt-filename: paymentorder300087-jolt.json
+    positionkeeping: 
+      context-path: /PositionKeeping/Initiate
+      hosturl: v1/bian-3/core/payment/termdeposit/10.0.0/
+      jolt-filename: positionkeeping853262-jolt.json
+    sessiondialogue: 
+      context-path: /SessionDialogue/{sessiondialogueId}/Retrieve
+      hosturl: v1/bian-3/core/payment/termdeposit/10.0.0/
+      jolt-filename: sessiondialogue467468-jolt.json
+  datasource: 
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: ${mysql_pwd}
+    url: jdbc:mysql://${mysql_url}:3306/camunda
+    username: ${mysql_user}
